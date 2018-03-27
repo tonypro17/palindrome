@@ -14,14 +14,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLCDNumber>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,48 +29,63 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QPushButton *searchBtn;
-    QSpinBox *inputOne;
-    QSpinBox *inputTwo;
-    QLineEdit *largestPalindromeDisplay;
-    QMenuBar *menuBar;
-    QMenu *menuFind_A_Palindrome;
-    QToolBar *mainToolBar;
+    QLineEdit *lineEditDisplay;
+    QLCDNumber *LDCNumberDisplay;
+    QLineEdit *inputOne;
+    QLineEdit *inputTwo;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
+        MainWindow->resize(411, 300);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         searchBtn = new QPushButton(centralWidget);
         searchBtn->setObjectName(QStringLiteral("searchBtn"));
-        searchBtn->setGeometry(QRect(170, 170, 75, 23));
-        inputOne = new QSpinBox(centralWidget);
+        searchBtn->setGeometry(QRect(180, 200, 75, 23));
+        lineEditDisplay = new QLineEdit(centralWidget);
+        lineEditDisplay->setObjectName(QStringLiteral("lineEditDisplay"));
+        lineEditDisplay->setGeometry(QRect(160, 170, 111, 20));
+        LDCNumberDisplay = new QLCDNumber(centralWidget);
+        LDCNumberDisplay->setObjectName(QStringLiteral("LDCNumberDisplay"));
+        LDCNumberDisplay->setGeometry(QRect(23, 72, 371, 41));
+        inputOne = new QLineEdit(centralWidget);
         inputOne->setObjectName(QStringLiteral("inputOne"));
-        inputOne->setGeometry(QRect(80, 90, 42, 22));
-        inputTwo = new QSpinBox(centralWidget);
+        inputOne->setGeometry(QRect(20, 120, 113, 20));
+        inputTwo = new QLineEdit(centralWidget);
         inputTwo->setObjectName(QStringLiteral("inputTwo"));
-        inputTwo->setGeometry(QRect(300, 90, 42, 22));
-        largestPalindromeDisplay = new QLineEdit(centralWidget);
-        largestPalindromeDisplay->setObjectName(QStringLiteral("largestPalindromeDisplay"));
-        largestPalindromeDisplay->setGeometry(QRect(170, 90, 91, 20));
+        inputTwo->setGeometry(QRect(280, 120, 113, 20));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(40, 150, 81, 51));
+        QFont font;
+        font.setPointSize(16);
+        label->setFont(font);
+        label->setScaledContents(false);
+        label->setWordWrap(true);
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(300, 150, 81, 51));
+        label_2->setFont(font);
+        label_2->setScaledContents(false);
+        label_2->setWordWrap(true);
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(150, 140, 131, 31));
+        label_3->setWordWrap(true);
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(30, 20, 361, 51));
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 21));
-        menuFind_A_Palindrome = new QMenu(menuBar);
-        menuFind_A_Palindrome->setObjectName(QStringLiteral("menuFind_A_Palindrome"));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
-
-        menuBar->addAction(menuFind_A_Palindrome->menuAction());
 
         retranslateUi(MainWindow);
 
@@ -83,7 +96,10 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         searchBtn->setText(QApplication::translate("MainWindow", "Search!", nullptr));
-        menuFind_A_Palindrome->setTitle(QApplication::translate("MainWindow", "Find-A-Palindrome!", nullptr));
+        label->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">Lower Limit</p></body></html>", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">Upper Limit</p></body></html>", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">The largest palindrome between them is:</p></body></html>", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Find the palindrome!</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

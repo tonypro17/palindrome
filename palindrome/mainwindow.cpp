@@ -1,15 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QIntValidator>
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    numOne = 0;
-    numTwo = 0;
-    largestPalindrome = 0;
+    result = 0;
 
-    largestPalindromeDisplay.setReadOnly(true);
+    ui->lineEditDisplay->setReadOnly(true);
+    ui->LDCNumberDisplay->setSegmentStyle(QLCDNumber::Flat);
+
+    QValidator *validator = new QIntValidator(this);
+    ui->inputOne->setValidator(validator);
+    ui->inputTwo->setValidator(validator);
 }
 
 MainWindow::~MainWindow()
@@ -17,18 +22,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_inputOne_valueChanged(int arg1)
-{
-    numOne = arg1;
-}
-
-void MainWindow::on_inputTwo_valueChanged(int arg1)
-{
-    numTwo = arg1;
-}
-
 void MainWindow::on_searchBtn_clicked()
 {
-    largestPalindrome = numOne + numTwo;
-    largestPalindromeDisplay.setText(QString::number(largestPalindrome));
+    numOne = ui->inputOne->text().toInt();
+    numTwo = ui->inputTwo->text().toInt();
+
+    result = findPalindrome(numOne, numTwo);
+
+    ui->lineEditDisplay->setText(QString::number(result));
+    ui->LDCNumberDisplay->display(result);
+}
+
+int MainWindow::findPalindrome(int lowerLimit, int upperLimit)
+{
+    int largestPalindrome = numOne + numTwo;
+
+    return largestPalindrome;
 }

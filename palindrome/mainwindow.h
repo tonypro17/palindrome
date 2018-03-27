@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QLCDNumber>
 
 namespace Ui {
 class MainWindow;
@@ -17,11 +18,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_inputOne_valueChanged(int arg1);
-
-    void on_inputTwo_valueChanged(int arg1);
-
     void on_searchBtn_clicked();
+    int findPalindrome(int lowerLimit, int upperLimit);
 
 private:
     Ui::MainWindow *ui;
@@ -29,8 +27,10 @@ private:
     int numOne;
     int numTwo;
 
-    int largestPalindrome;
-    QLineEdit largestPalindromeDisplay;
+    int result;
+
+    QLineEdit lineEditDisplay;
+    QLCDNumber LDCNumberDisplay;
 };
 
 #endif // MAINWINDOW_H
