@@ -13,12 +13,14 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -28,60 +30,100 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout_2;
     QPushButton *searchBtn;
-    QLineEdit *lineEditDisplay;
-    QLCDNumber *LDCNumberDisplay;
-    QLineEdit *inputOne;
+    QSpacerItem *horizontalSpacer_2;
     QLineEdit *inputTwo;
     QLabel *label;
+    QSpacerItem *horizontalSpacer;
     QLabel *label_2;
-    QLabel *label_3;
+    QLineEdit *inputOne;
     QLabel *label_4;
+    QLabel *label_3;
+    QLineEdit *resultTextDisplay;
+    QLCDNumber *LDCNumberDisplay;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(411, 300);
+        MainWindow->resize(515, 286);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        searchBtn = new QPushButton(centralWidget);
+        gridLayoutWidget = new QWidget(centralWidget);
+        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 511, 231));
+        gridLayout_2 = new QGridLayout(gridLayoutWidget);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_2->setHorizontalSpacing(20);
+        gridLayout_2->setVerticalSpacing(10);
+        gridLayout_2->setContentsMargins(10, 10, 10, 10);
+        searchBtn = new QPushButton(gridLayoutWidget);
         searchBtn->setObjectName(QStringLiteral("searchBtn"));
-        searchBtn->setGeometry(QRect(180, 200, 75, 23));
-        lineEditDisplay = new QLineEdit(centralWidget);
-        lineEditDisplay->setObjectName(QStringLiteral("lineEditDisplay"));
-        lineEditDisplay->setGeometry(QRect(160, 170, 111, 20));
-        LDCNumberDisplay = new QLCDNumber(centralWidget);
-        LDCNumberDisplay->setObjectName(QStringLiteral("LDCNumberDisplay"));
-        LDCNumberDisplay->setGeometry(QRect(23, 72, 371, 41));
-        inputOne = new QLineEdit(centralWidget);
-        inputOne->setObjectName(QStringLiteral("inputOne"));
-        inputOne->setGeometry(QRect(20, 120, 113, 20));
-        inputTwo = new QLineEdit(centralWidget);
+
+        gridLayout_2->addWidget(searchBtn, 5, 2, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_2, 3, 3, 1, 1);
+
+        inputTwo = new QLineEdit(gridLayoutWidget);
         inputTwo->setObjectName(QStringLiteral("inputTwo"));
-        inputTwo->setGeometry(QRect(280, 120, 113, 20));
-        label = new QLabel(centralWidget);
+
+        gridLayout_2->addWidget(inputTwo, 3, 4, 1, 1);
+
+        label = new QLabel(gridLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(40, 150, 81, 51));
         QFont font;
         font.setPointSize(16);
         label->setFont(font);
         label->setScaledContents(false);
         label->setWordWrap(true);
-        label_2 = new QLabel(centralWidget);
+
+        gridLayout_2->addWidget(label, 4, 0, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer, 3, 1, 1, 1);
+
+        label_2 = new QLabel(gridLayoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(300, 150, 81, 51));
         label_2->setFont(font);
         label_2->setScaledContents(false);
         label_2->setWordWrap(true);
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(150, 140, 131, 31));
-        label_3->setWordWrap(true);
-        label_4 = new QLabel(centralWidget);
+
+        gridLayout_2->addWidget(label_2, 4, 4, 1, 1);
+
+        inputOne = new QLineEdit(gridLayoutWidget);
+        inputOne->setObjectName(QStringLiteral("inputOne"));
+
+        gridLayout_2->addWidget(inputOne, 3, 0, 1, 1);
+
+        label_4 = new QLabel(gridLayoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(30, 20, 361, 51));
+
+        gridLayout_2->addWidget(label_4, 0, 0, 1, 5);
+
+        label_3 = new QLabel(gridLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setWordWrap(true);
+
+        gridLayout_2->addWidget(label_3, 3, 2, 1, 1);
+
+        resultTextDisplay = new QLineEdit(gridLayoutWidget);
+        resultTextDisplay->setObjectName(QStringLiteral("resultTextDisplay"));
+
+        gridLayout_2->addWidget(resultTextDisplay, 4, 2, 1, 1);
+
+        LDCNumberDisplay = new QLCDNumber(gridLayoutWidget);
+        LDCNumberDisplay->setObjectName(QStringLiteral("LDCNumberDisplay"));
+
+        gridLayout_2->addWidget(LDCNumberDisplay, 1, 0, 1, 5);
+
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -94,12 +136,12 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Palindrome Finder", nullptr));
         searchBtn->setText(QApplication::translate("MainWindow", "Search!", nullptr));
         label->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">Lower Limit</p></body></html>", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">Upper Limit</p></body></html>", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Find a palindrome!</span></p></body></html>", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">The largest palindrome between them is:</p></body></html>", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Find the palindrome!</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };
