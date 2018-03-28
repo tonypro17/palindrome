@@ -5,8 +5,6 @@
 #include <QLineEdit>
 #include <QLCDNumber>
 
-#include "focusablelineedit.h"
-
 namespace Ui {
 class MainWindow;
 }
@@ -23,11 +21,6 @@ private slots:
     void on_searchBtn_clicked();
     int findPalindrome(int lowerLimit, int upperLimit);
 
-    void on_inputOne_editingFinished();
-    void on_inputTwo_editingFinished();
-    void on_inputOne_focusInEvent(QFocusEvent *e);
-    void on_inputTwo_focusInEvent(QFocusEvent *e);
-
 private:
     Ui::MainWindow *ui;
 
@@ -35,9 +28,6 @@ private:
     int numTwo;
 
     int result;
-
-    FocusableLineEdit inputOne;
-    FocusableLineEdit inputTwo;
 
     QLineEdit resultTextDisplay;
     QLCDNumber LDCNumberDisplay;

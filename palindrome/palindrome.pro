@@ -25,12 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    focusablelineedit.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    focusablelineedit.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui
